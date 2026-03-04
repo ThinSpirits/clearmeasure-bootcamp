@@ -42,6 +42,7 @@ public class ZDataLoader
         var pmikkelson  = new Employee("pmikkelson", "Patrick", "Mikkelson", "patrick.mikkelson@lcecorp.com");
         pmikkelson.AddRole(lead);
         pmikkelson.AddRole(fulfillment);
+        pmikkelson.PreferredLanguage = "es-US";
         db.Add(pmikkelson);
 
         //Person 2
@@ -154,6 +155,7 @@ public class ZDataLoader
         // Church organist (generic character for church services)
         var organistEmployee = new Employee("gfeesh", "Gertie", "Feesh", "gertie@firstchurchspringfield.org");
         organistEmployee.AddRole(organist);
+        organistEmployee.PreferredLanguage = "es-MX"; // Adding some diversity to the organist character
         db.Add(organistEmployee);
 
         // Apu Nahasapeemapetilon - Represents religious diversity but attends some services
