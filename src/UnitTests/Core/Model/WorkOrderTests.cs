@@ -46,7 +46,7 @@ public class WorkOrderTests
         workOrder.Assignee = assignee;
 
         Assert.That(workOrder.Id, Is.EqualTo(guid));
-        Assert.That(workOrder.Title, Is.EqualTo("Title"));
+        Assert.That(workOrder.Title, Is.EqualTo("TITLE"));
         Assert.That(workOrder.Description, Is.EqualTo("Description"));
         Assert.That(workOrder.Status, Is.EqualTo(WorkOrderStatus.Complete));
         Assert.That(workOrder.Number, Is.EqualTo("Number"));
@@ -70,6 +70,22 @@ public class WorkOrderTests
         var order = new WorkOrder();
         order.Description = longText;
         Assert.That(order.Description.Length, Is.EqualTo(4000));
+    }
+
+    [Test]
+    public void Title_WithMixedCaseInput_ShouldConvertToUpperCase()
+    {
+        var order = new WorkOrder();
+        order.Title = "Fix Broken Window";
+        Assert.That(order.Title, Is.EqualTo("FIX BROKEN WINDOW"));
+    }
+
+    [Test]
+    public void Title_WithNullInput_ShouldRemainNull()
+    {
+        var order = new WorkOrder();
+        order.Title = null;
+        Assert.That(order.Title, Is.Null);
     }
 
     [Test]

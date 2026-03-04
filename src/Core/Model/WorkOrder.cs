@@ -4,7 +4,16 @@ public class WorkOrder : EntityBase<WorkOrder>
 {
     private string? _description = "";
 
-    public string? Title { get; set; } = "";
+    private string? _title = "";
+
+    /// <summary>
+    /// Gets or sets the work order title. Value is automatically converted to uppercase on set.
+    /// </summary>
+    public string? Title
+    {
+        get => _title;
+        set => _title = value?.ToUpper();
+    }
 
     public string? Description
     {
