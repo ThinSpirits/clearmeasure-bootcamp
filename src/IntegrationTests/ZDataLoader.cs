@@ -39,16 +39,12 @@ public class ZDataLoader
         db.Add(aiBot);
 
         //Person 1
-        var jcuevas = new Employee("jcuevas", "Joe", "Cuevas", "joecuevasjr@gmail.com");
-        jcuevas.PreferredLanguage = "es-ES";
-        jcuevas.AddRole(fulfillment);
-        db.Add(jcuevas);
+        var pmikkelson  = new Employee("pmikkelson", "Patrick", "Mikkelson", "patrick.mikkelson@lcecorp.com");
+        pmikkelson.AddRole(lead);
+        pmikkelson.AddRole(fulfillment);
+        db.Add(pmikkelson);
 
         //Person 2
-        var bsides = new Employee("bsides", "Bart", "Sides", "bartsides@gmail.com");
-        bsides.AddRole(lead);
-        bsides.AddRole(fulfillment);
-        db.Add(bsides);
 
         //Person 3
 
@@ -59,53 +55,23 @@ public class ZDataLoader
         //Person 6
 
         //Person 7
-        var cklaips = new Employee("cklaips", "Casey", "Klaips", "cklaips@gmail.com");
-        cklaips.AddRole(lead);
-        cklaips.AddRole(fulfillment);
-        db.Add(cklaips);
 
         //Person 8
 
         //Person 9
-        var csullivan = new Employee("csullivan", "Cole", "Sullivan", "cole.sullivan@biberk.com");
-        csullivan.AddRole(lead);
-        csullivan.AddRole(fulfillment);
-        db.Add(csullivan);
 
         //Person 10
 
         //Person 11
 
         //Person 12
-        //trivial comment
-        var nlarsen = new Employee("nlarsen", "Nick", "Larsen", "nick@larsen.com");
-        nlarsen.PreferredLanguage = "de-DE";
-        nlarsen.AddRole(lead);
-        nlarsen.AddRole(fulfillment);
-        db.Add(nlarsen);
 
         //Person 13
-        var pludecker = new Employee("pludecker", "Paige", "Ludecker", "pludecker@gmail.com");
-        pludecker.PreferredLanguage = "de-DE";
-        pludecker.AddRole(lead);
-        pludecker.AddRole(fulfillment);
-        db.Add(pludecker);
 
         var hsimpson = new Employee("hsimpson", "Homer", "Simpson", "homer@simpson.com");
         hsimpson.AddRole(lead);
         hsimpson.AddRole(fulfillment);
         db.Add(hsimpson);
-
-        var ndoughton = new Employee("ndoughton", "Noah", "Doughton", "noah.doughton@biberk.com");
-        ndoughton.AddRole(lead);
-        ndoughton.AddRole(fulfillment);
-        db.Add(ndoughton);
-
-        var will = new Employee("will", "Will", "Perea", "wperea@setworks.com");
-        will.PreferredLanguage = "es-ES";
-        will.AddRole(lead);
-        will.AddRole(fulfillment);
-        db.Add(will);
 
         db.SaveChanges();
         db.Dispose();
