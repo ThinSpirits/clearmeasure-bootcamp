@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using ClearMeasure.Bootcamp.Core.Model.StateCommands;
 using ClearMeasure.Bootcamp.UI.Shared.Pages;
 
 namespace ClearMeasure.Bootcamp.AcceptanceTests.WorkOrders;
@@ -58,7 +59,7 @@ public class WorkOrderSpeechTests : AcceptanceTestBase
     }
 
     [Test, Retry(2)]
-    public async Task ShouldShowSpeakButtonsOnReadOnlyWorkOrder()
+    public async Task ShouldShowSpeakButtonsOnCompletedWorkOrder()
     {
         await LoginAsCurrentUser();
 
@@ -74,7 +75,10 @@ public class WorkOrderSpeechTests : AcceptanceTestBase
         order = await CompleteExistingWorkOrder(order);
         order = await ClickWorkOrderNumberFromSearchPage(order);
 
-        await Expect(Page.GetByTestId(nameof(WorkOrderManage.Elements.ReadOnlyMessage))).ToBeVisibleAsync();
+        // After adding reopen capability, the assignee can reopen a completed work order,
+        // so the form is no longer read-only - verify the Reopen button is available
+        var reopenButtonTestId = nameof(WorkOrderManage.Elements.CommandButton) + CompleteToInProgressCommand.Name;
+        await Expect(Page.GetByTestId(reopenButtonTestId)).ToBeVisibleAsync();
         await Expect(Page.GetByTestId(nameof(WorkOrderManage.Elements.SpeakTitle))).ToBeVisibleAsync();
         await Expect(Page.GetByTestId(nameof(WorkOrderManage.Elements.SpeakDescription))).ToBeVisibleAsync();
     }
